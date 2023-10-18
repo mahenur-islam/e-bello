@@ -1,6 +1,8 @@
-
-import Swal from 'sweetalert2'
+import Swal from "sweetalert2";
+import { useRef } from "react";
 const AddProduct = () => {
+
+  const formRef = useRef(null);
   //function to add product
   const handleAddProduct = (e) => {
     e.preventDefault();
@@ -35,11 +37,12 @@ const AddProduct = () => {
       .then((data) => {
         if (data.insertedId) {
           Swal.fire({
-            title: 'success',
-            text: 'Product added successfully',
-            icon: 'success',
-            confirmButtonText: 'Okay'
-          })
+            title: "success",
+            text: "Product added successfully",
+            icon: "success",
+            confirmButtonText: "Okay",
+          });
+          formRef.current.reset();
         }
       });
   };
@@ -49,7 +52,7 @@ const AddProduct = () => {
         <h1 className="font-serif text-xl md:text-3xl font-extrabold">
           Add Product
         </h1>
-        <form className=" p-10" onSubmit={handleAddProduct}>
+        <form className=" p-10" onSubmit={handleAddProduct} ref={formRef}>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
             <div className="form-control">
               <input
@@ -85,13 +88,13 @@ const AddProduct = () => {
             </div>
           </div>
           <div className="form-control mt-5">
-              <input
-                type="text"
-                name="price"
-                placeholder="Price"
-                className="input input-bordered  w-full max-w-2xl"
-              />
-            </div>
+            <input
+              type="text"
+              name="price"
+              placeholder="Price"
+              className="input input-bordered  w-full max-w-2xl"
+            />
+          </div>
           <div className="form-control mt-5">
             {/* <input type="text" placeholder="Short Description" className="input input-bordered  w-full max-w-xs" /> */}
             <textarea

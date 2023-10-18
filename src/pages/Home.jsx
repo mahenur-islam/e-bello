@@ -1,8 +1,9 @@
+import BrandList from "../components/Brandlist";
 
 const Home = () => {
     return (
         <div>
-            Home Page
+           <BrandList></BrandList>
         </div>
     );
 };
