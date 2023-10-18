@@ -1,8 +1,7 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate  } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { useState } from "react";
-import auth from "../firebase/firebase.config";
+import { useContext, useState} from "react";
+import { AuthContext } from "../provider/Authprovider";
 
 const Register = () => {
   const backGroundImg = {
@@ -11,6 +10,8 @@ const Register = () => {
 
   const [registerError, setRegisterError] = useState("");
   const [registerSuccess, setRegisterSuccess] = useState("");
+  const { createUser, signInWithGoogle } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const handleRegister = (e) => {
     e.preventDefault();
@@ -44,16 +45,24 @@ const Register = () => {
     setRegisterError("");
 
     //create user using email and password
-    createUserWithEmailAndPassword(auth, email, password)
+    createUser(email, password)
       .then((result) => {
         console.log(result.user);
         setRegisterSuccess("User created successfully");
+        e.target.reset();
+        navigate('/');
       })
       .catch((error) => {
         console.error(error);
         setRegisterError(error.message);
       });
   };
+  //google sign in with popup
+  const handleGoogleSignIn = ()=>{
+    signInWithGoogle()
+    .then(result => console.log(result.user))
+    .catch(error => console.error(error))
+  }
 
   return (
     <div
@@ -162,7 +171,7 @@ const Register = () => {
             </Link>
           </p>
         </form>
-        <FcGoogle className="text-5xl mx-auto mb-5"></FcGoogle>
+        <FcGoogle className="text-5xl mx-auto mb-5" onClick={handleGoogleSignIn}></FcGoogle>
       </div>
     </div>
   );

@@ -1,7 +1,17 @@
 import { NavLink, Link } from "react-router-dom";
 import { RiMenu2Line } from "react-icons/ri";
+import { useContext } from "react";
+import { AuthContext } from "../provider/Authprovider";
 
 const Navbar = () => {
+
+  const {user, logOut} = useContext(AuthContext);
+
+  const handleLogOut = () => {
+    logOut()
+    .then(()=> console.log('user logged out'))
+    .catch((error)=> console.error(error))
+  }
   return (
     <div>
       <div className="navbar bg-base-100 p-2">
@@ -54,7 +64,10 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end">
-          <Link className="btn">Logout</Link>
+          {
+            user ? <><span>{user.email}</span>  <Link className="btn" onClick={handleLogOut}>Logout</Link></> : <Link to='/login' className="btn">Login</Link>
+          }
+       
         </div>
       </div>
     </div>
