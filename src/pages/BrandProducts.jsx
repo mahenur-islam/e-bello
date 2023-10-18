@@ -33,6 +33,7 @@ const BrandProducts = () => {
                     {products.map((product) => (
                         <li key={product._id}>
                             {product.productName}
+                            <img src={product.photoUrl} alt=''/>
                         </li>
                     ))}
                 </ul>
