@@ -52,6 +52,7 @@ const ProductCard = ({ product }) => {
         </figure>
         <div className="card-body items-center text-center">
           <h2 className="card-title">{productName}</h2>
+          <p>{brandName}</p>
           <p>{description}</p>
           <p>{types}</p>
           <p>{price}</p>

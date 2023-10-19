@@ -13,6 +13,7 @@ const routes = createBrowserRouter([
   {
     path: "/",
     element: <Root></Root>,
+    errorElement:<ErrorPage></ErrorPage>,
     children: [
       {
         path: "/",
@@ -35,6 +36,10 @@ const routes = createBrowserRouter([
         path: "/products/:brandName",
         element: <BrandProducts></BrandProducts>,
       },
+      // {
+      //   path:"/brandproducts",
+      //   element: <BrandProducts></BrandProducts>
+      // },
       {
         path: "/login",
         element: <LogIn></LogIn>,

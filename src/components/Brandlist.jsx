@@ -1,32 +1,91 @@
+
 import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 
 const brands = [
-  { id: 1, brand: 'Apple', image: 'https://i.ibb.co/1r4fpb6/brand-apple-svgrepo-com.png' },
-  { id: 2, brand: 'Samsung', image: 'https://i.ibb.co/WBPwxNv/samsung-svgrepo-com.png' },
-  { id: 3, brand: 'Xiaomi', image: 'https://i.ibb.co/QpB61bn/xiaomi-svgrepo-com.png' },
-  { id: 4, brand: 'Huawei', image: 'https://i.ibb.co/vPY3kZK/huawei-svgrepo-com.png' },
-  { id: 5, brand: 'Vivo', image: 'https://i.ibb.co/fnRP6wF/vivo-2-logo-svgrepo-com-1.png' },
-  { id: 6, brand: 'OnePlus', image: 'https://i.ibb.co/M8VvQYg/oneplus-svgrepo-com.png' },
+  { id: 1, brandName: 'Apple', image: 'https://i.ibb.co/1r4fpb6/brand-apple-svgrepo-com.png' },
+  { id: 2, brandName: 'Samsung', image: 'https://i.ibb.co/WBPwxNv/samsung-svgrepo-com.png' },
+  { id: 3, brandName: 'Xiaomi', image: 'https://i.ibb.co/QpB61bn/xiaomi-svgrepo-com.png' },
+  { id: 4, brandName: 'Huawei', image: 'https://i.ibb.co/vPY3kZK/huawei-svgrepo-com.png' },
+  { id: 5, brandName: 'Vivo', image: 'https://i.ibb.co/fnRP6wF/vivo-2-logo-svgrepo-com-1.png' },
+  { id: 6, brandName: 'OnePlus', image: 'https://i.ibb.co/M8VvQYg/oneplus-svgrepo-com.png' },
 ];
 
 const BrandList = () => {
+  const [data, setData] = useState([]);
+  const [selectedBrand, setSelectedBrand] = useState("");
+
+  const handleShowProduct = (e) => {
+    console.log(e);
+    setSelectedBrand(e.toLowerCase()); 
+  };
+
+  useEffect(() => {
+    fetch("http://localhost:5000/products")
+      .then((res) => res.json())
+      .then((data) => {
+        if (selectedBrand) {
+          // Filter data based on the selected brand
+          const filteredData = data.filter(
+            (item) => item.brandName.toLowerCase() === selectedBrand
+          );
+          setData(filteredData);
+          console.log(data);
+        } 
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  }, [selectedBrand]);
+
   return (
     <div className='p-10'>
-      <h1 className='text-center text-3xl md:text-5xl my-10'>Brands</h1>
+      <h1 className='text-center text-xl md:text-3xl my-10'>Brands</h1>
       <ul className='grid grid-cols-1 md:grid-cols-6 gap-5'>
         {brands.map((brand) => (
-          <li key={brand.id} >
-            <Link to={`/products/${brand.brand}`} >
-             <div className='bg-gray-100 rounded-xl p-2 hover:opacity-50'>
-             <img src={brand.image} alt={brand.brand} className='w-1/2 mx-auto'/>
-              <h3 className='text-center'>{brand.brand}</h3>
-             </div>
-            </Link> 
+          <li key={brand.id}>
+            <Link  onClick={() => handleShowProduct(brand.brandName)}>
+              <div className='bg-gray-100 rounded-xl p-2 hover:opacity-50'>
+                <img src={brand.image} alt={brand.brandName} className='w-1/2 mx-auto' />
+                <h3 className='text-center'>{brand.brandName}</h3>
+              </div>
+            </Link>
           </li>
         ))}
       </ul>
+
+      
+  <h1 className="text-4xl font-bold mt-5">Products</h1>
+      <div className="grid sm:grid-cols-1 lg:grid-cols-4 gap-5 mt-5">
+        {data.map((item) => (
+          <Link to={`/shop/${item._id}`} key={item._id}>
+            <div className="card w-72 h-[480px] bg-base-100 shadow-xl mx-auto">
+              <figure>
+                <img className="w-64" src={item.image} alt="Shoes" />
+              </figure>
+              <div className="card-body">
+                <h2 className="card-title">
+                  {item.productCategory}!
+                  <div className="badge badge-secondary">NEW</div>
+                </h2>
+                <p className="text-justify">{item.productName}</p>
+                <div className="card-actions justify-end">
+                  <div className="badge badge-outline">${item.price}</div>
+                  <div className="badge badge-outline">
+                    {item.AvailableQuantity ? "Stock In" : "Stock Out"}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Link>
+        ))}
+      </div> 
     </div>
   );
 };
 
 export default BrandList;
+
+
+
+// to={`/brandproducts/${brand.brandName}`}
