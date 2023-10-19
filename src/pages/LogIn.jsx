@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { useContext } from "react";
 import { AuthContext } from "../provider/Authprovider";
@@ -11,6 +11,8 @@ const LogIn = () => {
 
     const {signInUser, signInWithGoogle} = useContext(AuthContext);
     const navigate = useNavigate();
+    const location = useLocation();
+    console.log('location in log in page',location)
 
 
     const handleLogIn = (e) => {
@@ -24,7 +26,7 @@ const LogIn = () => {
       .then(result => {
         console.log(result.user);
         e.target.reset();
-        navigate('/')
+        navigate(location?.state ? location.state : '/');
       })
       .catch(error => {
         console.error(error)

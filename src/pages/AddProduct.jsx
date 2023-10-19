@@ -45,6 +45,16 @@ const AddProduct = () => {
           formRef.current.reset();
         }
       });
+
+      fetch("http://localhost:5000/brands", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify({ name: brandName }),
+      });
+
+      formRef.current.reset();
   };
   return (
     <div className="w-full text-center  p-1 md:p-10">

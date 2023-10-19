@@ -6,12 +6,12 @@ import { getAuth } from "firebase/auth";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyAdnSYyfZYYs_4Ol8oi1wV39glF_GkfuQ0",
-  authDomain: "e-bello-cleint-auth.firebaseapp.com",
-  projectId: "e-bello-cleint-auth",
-  storageBucket: "e-bello-cleint-auth.appspot.com",
-  messagingSenderId: "148504425402",
-  appId: "1:148504425402:web:9fb848fc5921ef5c2ba383"
+  apiKey: import.meta.env.VITE_APIKEY,
+  authDomain:  import.meta.env.VITE_AUTHDOMAIN,
+  projectId: import.meta.env.VITE_PROJECTID,
+  storageBucket: import.meta.env.VITE_STORAGEBUCKET,
+  messagingSenderId: import.meta.env.VITE_MESSAGINGSENDERID,
+  appId: import.meta.env.VITE_APPID
 };
 
 // Initialize Firebase
