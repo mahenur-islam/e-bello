@@ -24,11 +24,14 @@ const ProductCardDetails = ({ product }) => {
     photoUrl,
   } = product;
 
-  
   console.log(product);
   const handleUpdate = (_id) => {
     console.log(_id);
   };
+
+  const handleShowDetails = (_id) =>{
+    console.log(_id);
+  }
 
   return (
     <div>
@@ -39,7 +42,7 @@ const ProductCardDetails = ({ product }) => {
         <CardBody>
           <div className="mb-3 flex items-center justify-between">
             <Typography variant="h5" color="blue-gray" className="font-medium">
-            {productName}
+              {productName}
             </Typography>
             <Typography
               color="blue-gray"
@@ -51,22 +54,31 @@ const ProductCardDetails = ({ product }) => {
           </div>
           <Typography variant="h5" color="blue-gray" className="text-md">
             {brandName}
-            </Typography>
-          <Typography color="gray">
-            {description}
           </Typography>
+          <Typography color="gray">{description}</Typography>
         </CardBody>
         <CardFooter className="pt-3">
-          <Button size="lg" fullWidth={true} className="text-black border p-2 rounded-lg hover:bg-sky-800 hover:text-white mb-5">
-            Show Details
-          </Button>
-          
-          <Link to = {`/updateProduct/${_id}`}>
-          <Button size="lg" fullWidth={true} className="text-black border p-2 rounded-lg hover:bg-sky-800 hover:text-white mb-5" onClick = {()=>handleUpdate(_id)}>
-            Update
-          </Button>
+          <Link to={`/showdetails/${_id}`}>
+            <Button
+              size="lg"
+              fullWidth={true}
+              className="text-black border p-2 rounded-lg hover:bg-sky-800 hover:text-white mb-5"
+              onClick={() => handleShowDetails(_id)}
+            >
+              Show Details
+            </Button>
           </Link>
-          
+
+          <Link to={`/updateProduct/${_id}`}>
+            <Button
+              size="lg"
+              fullWidth={true}
+              className="text-black border p-2 rounded-lg hover:bg-sky-800 hover:text-white mb-5"
+              onClick={() => handleUpdate(_id)}
+            >
+              Update
+            </Button>
+          </Link>
         </CardFooter>
       </Card>
     </div>

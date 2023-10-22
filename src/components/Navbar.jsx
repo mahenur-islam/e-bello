@@ -4,14 +4,13 @@ import { useContext } from "react";
 import { AuthContext } from "../provider/Authprovider";
 
 const Navbar = () => {
-
-  const {user, logOut} = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
 
   const handleLogOut = () => {
     logOut()
-    .then(()=> console.log('user logged out'))
-    .catch((error)=> console.error(error))
-  }
+      .then(() => console.log("user logged out"))
+      .catch((error) => console.error(error));
+  };
   return (
     <div>
       <div className="navbar bg-base-100 p-2">
@@ -61,10 +60,23 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end">
-          {
-            user ? <><span>{user.email}</span>  <Link className="btn" onClick={handleLogOut}>Logout</Link></> : <Link to='/login' className="btn">Login</Link>
-          }
-       
+          {user ? (
+            <>
+              <span>{user.displayName}</span>
+              <div className="avatar">
+                <div className="w-10 mx-2 rounded-full">
+                  <img src={user.photoURL} />
+                </div>
+              </div>{" "}
+              <Link className="btn" onClick={handleLogOut}>
+                Logout
+              </Link>
+            </>
+          ) : (
+            <Link to="/login" className="btn">
+              Login
+            </Link>
+          )}
         </div>
       </div>
     </div>

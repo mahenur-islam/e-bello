@@ -4,6 +4,8 @@ import Brands from "../components/Brands";
 import Services from "../components/Services";
 
 const Home = () => {
+
+
   return (
     <div>
       <Banner></Banner>
