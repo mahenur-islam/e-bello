@@ -25,10 +25,10 @@ const ProductCardDetails = ({ product }) => {
   } = product;
 
   
-  // console.log(product);
-  // const handleUpdate = () => {
-  //   console.log("this is handle update");
-  // };
+  console.log(product);
+  const handleUpdate = (_id) => {
+    console.log(_id);
+  };
 
   return (
     <div>
@@ -61,9 +61,11 @@ const ProductCardDetails = ({ product }) => {
             Show Details
           </Button>
           
-          <Button size="lg" fullWidth={true} className="text-black border p-2 rounded-lg hover:bg-sky-800 hover:text-white mb-5">
+          <Link to = {`/updateProduct/${_id}`}>
+          <Button size="lg" fullWidth={true} className="text-black border p-2 rounded-lg hover:bg-sky-800 hover:text-white mb-5" onClick = {()=>handleUpdate(_id)}>
             Update
           </Button>
+          </Link>
           
         </CardFooter>
       </Card>
