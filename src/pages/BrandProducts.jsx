@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 
 import ProductCardDetails from './ProductCardDetails';
 import Advertisement from '../components/Advertisement'
+import Banner from '../components/Banner';
 
 const BrandProducts = () => {
   const { brandName } = useParams(); // Get the brandName from the URL parameter
@@ -25,9 +26,9 @@ const BrandProducts = () => {
   return (
     <div>
       <div>
-      <Advertisement></Advertisement>
+      <Banner></Banner>
       </div>
-      <h1>Products by {brandName}</h1>
+      <h1 className='text-center text-3xl md:text-5xl font-bold'>Products by {brandName}</h1>
       <div className="product-list grid grid-cols-1 md:grid-cols-4 gap-5 p-3 my-10">
         {products.map((product) => (
           <ProductCardDetails key={product.id} product={product} />

@@ -1,3 +1,4 @@
+import Advertisement from "../components/Advertisement";
 import Banner from "../components/Banner";
 import Brands from "../components/Brands";
 // import BrandList from "../components/Brandlist";
@@ -11,6 +12,7 @@ const Home = () => {
       <Banner></Banner>
       {/* <BrandList></BrandList> */}
       <Brands></Brands>
+      <Advertisement></Advertisement>
       <Services></Services>
     </div>
   );

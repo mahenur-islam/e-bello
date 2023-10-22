@@ -48,6 +48,9 @@ const ShowDetails = () => {
               <Link to="/" className="btn btn-primary">
                 Go Back to Homepage
               </Link>
+              <Link  className="btn btn-primary ml-10">
+                Add to Cart 
+              </Link>
             </div>
           </div>
         </div>

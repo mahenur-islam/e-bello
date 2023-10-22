@@ -1,6 +1,4 @@
 /* eslint-disable react/prop-types */
-// ProductCardDetails.js
-
 import { Link } from "react-router-dom";
 import { AiTwotoneStar } from "react-icons/ai";
 import {
@@ -25,19 +23,22 @@ const ProductCardDetails = ({ product }) => {
   } = product;
 
   console.log(product);
+
   const handleUpdate = (_id) => {
     console.log(_id);
   };
 
-  const handleShowDetails = (_id) =>{
+  const handleShowDetails = (_id) => {
     console.log(_id);
-  }
+  };
 
   return (
-    <div>
-      <Card className="w-full  max-w-[26rem] shadow-lg p-3 ">
+    <div className="w-96 h-auto mb-6 p-3">
+      <Card className="w-full shadow-lg p-3 bg-gray-200">
         <CardHeader floated={false} color="blue-gray" className="shadow-none">
-          <img src={photoUrl} alt="ui/ux review check" />
+          <div className="h-96">
+            <img src={photoUrl} alt="ui/ux review check" className="w-full h-full object-cover" />
+          </div>
         </CardHeader>
         <CardBody>
           <div className="mb-3 flex items-center justify-between">
@@ -55,6 +56,9 @@ const ProductCardDetails = ({ product }) => {
           <Typography variant="h5" color="blue-gray" className="text-md">
             {brandName}
           </Typography>
+          <Typography variant="h5" color="blue-gray" className="text-md">
+            {types}
+          </Typography>
           <Typography color="gray">{description}</Typography>
         </CardBody>
         <CardFooter className="pt-3">
@@ -62,7 +66,7 @@ const ProductCardDetails = ({ product }) => {
             <Button
               size="lg"
               fullWidth={true}
-              className="text-black border p-2 rounded-lg hover:bg-sky-800 hover:text-white mb-5"
+              className="bg-sky-800 text-white p-2 rounded-lg hover:bg-sky-600"
               onClick={() => handleShowDetails(_id)}
             >
               Show Details
@@ -73,7 +77,7 @@ const ProductCardDetails = ({ product }) => {
             <Button
               size="lg"
               fullWidth={true}
-              className="text-black border p-2 rounded-lg hover:bg-sky-800 hover:text-white mb-5"
+              className="bg-sky-800 text-white p-2 rounded-lg hover:bg-sky-600 mt-2"
               onClick={() => handleUpdate(_id)}
             >
               Update
