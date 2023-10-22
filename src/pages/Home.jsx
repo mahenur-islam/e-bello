@@ -1,12 +1,14 @@
 import Banner from "../components/Banner";
-import BrandList from "../components/Brandlist";
+import Brands from "../components/Brands";
+// import BrandList from "../components/Brandlist";
 import Services from "../components/Services";
 
 const Home = () => {
   return (
     <div>
       <Banner></Banner>
-      <BrandList></BrandList>
+      {/* <BrandList></BrandList> */}
+      <Brands></Brands>
       <Services></Services>
     </div>
   );

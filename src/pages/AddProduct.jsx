@@ -51,7 +51,7 @@ const AddProduct = () => {
         headers: {
           "content-type": "application/json",
         },
-        body: JSON.stringify({ name: brandName }),
+        body: JSON.stringify({ brandName: brandName}),
       });
 
       formRef.current.reset();

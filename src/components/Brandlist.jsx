@@ -1,4 +1,3 @@
-
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
@@ -44,7 +43,7 @@ const BrandList = () => {
       <ul className='grid grid-cols-1 md:grid-cols-6 gap-5'>
         {brands.map((brand) => (
           <li key={brand.id}>
-            <Link  onClick={() => handleShowProduct(brand.brandName)}>
+            <Link onClick={() => handleShowProduct(brand.brandName)}>
               <div className='bg-gray-100 rounded-xl p-2 hover:opacity-50'>
                 <img src={brand.image} alt={brand.brandName} className='w-1/2 mx-auto' />
                 <h3 className='text-center'>{brand.brandName}</h3>
@@ -55,22 +54,21 @@ const BrandList = () => {
       </ul>
 
       
-  <h1 className="text-4xl font-bold mt-5">Products</h1>
       <div className="grid sm:grid-cols-1 lg:grid-cols-4 gap-5 mt-5">
         {data.map((item) => (
-          <Link to={`/shop/${item._id}`} key={item._id}>
-            <div className="card w-72 h-[480px] bg-base-100 shadow-xl mx-auto">
+          <Link   key={item._id} to={`/product/${item._id}`}>
+            <div className="card w-72 h-[480px] bg-base-200 shadow-xl mx-auto mt-2 ">
               <figure>
-                <img className="w-64" src={item.image} alt="Shoes" />
+                <img className="w-64" src={item.photoUrl} alt="Shoes" />
               </figure>
               <div className="card-body">
-                <h2 className="card-title">
-                  {item.productCategory}!
+                <h2 className="card-title text-md">
+                  {item.brandName}!
                   <div className="badge badge-secondary">NEW</div>
                 </h2>
-                <p className="text-justify">{item.productName}</p>
+                <p className="text-justify text-2xl">{item.productName}</p>
                 <div className="card-actions justify-end">
-                  <div className="badge badge-outline">${item.price}</div>
+                  <div className="text-xl">${item.price}</div>
                   <div className="badge badge-outline">
                     {item.AvailableQuantity ? "Stock In" : "Stock Out"}
                   </div>
@@ -85,7 +83,3 @@ const BrandList = () => {
 };
 
 export default BrandList;
-
-
-
-// to={`/brandproducts/${brand.brandName}`}

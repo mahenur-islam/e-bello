@@ -1,5 +1,4 @@
 /* eslint-disable react/prop-types */
-import { RiDeleteBin5Fill } from "react-icons/ri";
 import Swal from "sweetalert2";
 const ProductCard = ({ product }) => {
   const {
@@ -18,49 +17,80 @@ const ProductCard = ({ product }) => {
 
     // Confirmation message to delete the product
     Swal.fire({
-        title: "Are you sure?",
-        text: "You won't be able to revert this!",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Yes, delete it!",
-      }).then((result) => {
-        if (result.isConfirmed) {
-          fetch(`http://localhost:5000/products/${_id}`, {
-            method: "DELETE",
-          })
-            .then((res) => res.json())
-            .then((data) => {
-              if (data.deletedCount > 0) {
-                Swal.fire("Deleted!", "Your product has been deleted.", "success");
-                window.location.reload();
-              }
-            });
-        }
-      });
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:5000/products/${_id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.deletedCount > 0) {
+              Swal.fire(
+                "Deleted!",
+                "Your product has been deleted.",
+                "success"
+              );
+              window.location.reload();
+            }
+          });
+      }
+    });
   };
   return (
     <div>
-      <div className="card w-96 h-[40rem] bg-base-100 shadow-xl p-5">
-        <figure className="px-10 pt-10">
-          <img
-            src={photoUrl}
-            alt="Shoes"
-            className="rounded-xl w-[250px] h-[250px]"
-          />
+      <div className="card card-side w-full bg-base-100 shadow-xl mb-10 text-left">
+        <figure>
+          <img src={photoUrl} alt="Movie" className="w-[200px] h-[200px]" />
         </figure>
-        <div className="card-body items-center text-center">
-          <h2 className="card-title">{productName}</h2>
-          <p>{brandName}</p>
+        <div className="card-body">
+          <h2 className="card-title text-2xl">{productName}</h2>
+          <p className="font-semibold">
+            {brandName}
+          </p>
+          <h3 className="text-orange-600 font-bold">{ratings}</h3>
+          <div className="rating">
+            <input
+              type="radio"
+              name="rating-4"
+              className="mask mask-star-2 bg-green-500"
+            />
+            <input
+              type="radio"
+              name="rating-4"
+              className="mask mask-star-2 bg-green-500"
+              defaultChecked
+            />
+            <input
+              type="radio"
+              name="rating-4"
+              className="mask mask-star-2 bg-green-500"
+            />
+            <input
+              type="radio"
+              name="rating-4"
+              className="mask mask-star-2 bg-green-500"
+            />
+            <input
+              type="radio"
+              name="rating-4"
+              className="mask mask-star-2 bg-green-500"
+            />
+          </div>
           <p>{description}</p>
-          <p>{types}</p>
-          <p>{price}</p>
-          <div className="card-actions">
-            <RiDeleteBin5Fill
-              className="text-red-500 text-2xl md:text-3xl hover:text-black"
+          <div className="card-actions justify-end">
+            <button
+              className="btn btn-primary"
               onClick={() => handleDelete(_id)}
-            ></RiDeleteBin5Fill>
+            >
+              Delete
+            </button>
           </div>
         </div>
       </div>
