@@ -39,7 +39,7 @@ const ProductCard = ({ product }) => {
     }).then((result) => {
       if (result.isConfirmed) {
         fetch(
-          `https://e-bello-server-rnjd4fz5y-mdmahenurislams-projects.vercel.app/products/${_id}`,
+          `https://e-bello-server-eqg1y2hj3-mdmahenurislams-projects.vercel.app/products/${_id}`,
           {
             method: "DELETE",
           }

@@ -78,6 +78,7 @@ const Navbar = () => {
               <NavLink to="/mycart" className="dark:text-white">My Cart</NavLink>
             </li>
           </ul>
+          <button onClick={changeTheme} className="text-2xl mr-5"><MdDarkMode></MdDarkMode></button>
         </div>
         <div className="navbar-end">
           {user ? (
@@ -98,7 +99,7 @@ const Navbar = () => {
             </Link>
           )}
         </div>
-        <button onClick={changeTheme} className="text-2xl ml-2"><MdDarkMode></MdDarkMode></button>
+       
       </div>
     </div>
   );

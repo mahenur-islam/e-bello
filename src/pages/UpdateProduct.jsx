@@ -28,7 +28,7 @@ const UpdateProduct = () => {
     };
 
    
-    fetch(`https://e-bello-server-rnjd4fz5y-mdmahenurislams-projects.vercel.app/products/${product_id}`, {
+    fetch(`https://e-bello-server-eqg1y2hj3-mdmahenurislams-projects.vercel.app/products/${product_id}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
