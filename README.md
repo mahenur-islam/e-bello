@@ -1,8 +1,13 @@
-# React + Vite
+client site live link: 
+http://eager-wing.surge.sh
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+server-side-product link: 
+https://e-bello-server-eqg1y2hj3-mdmahenurislams-projects.vercel.app/products
 
-Currently, two official plugins are available:
+Five Special Features: 
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+1. Dynamic Routing
+2. Login with email password and google
+3. Dark and Light mode
+4. Responsive in mobile and laptops
+5. Dynamically fetch and display data from mongoDB database

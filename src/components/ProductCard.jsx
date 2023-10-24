@@ -6,15 +6,13 @@ import {
   CardBody,
   CardFooter,
   Typography,
-  Avatar,
-  Tooltip,
   Button,
 } from "@material-tailwind/react";
 
 import { AiFillStar } from "react-icons/ai";
 const ProductCard = ({ product }) => {
   const {
-    _id,
+
     productName,
     brandName,
     types,
@@ -72,6 +70,9 @@ const ProductCard = ({ product }) => {
         <Typography variant="h4" color="blue-gray">
           {productName}
         </Typography>
+        <Typography variant="h4" color="blue-gray">
+          {brandName}
+        </Typography>
        <div className="flex justify-center">
        <Typography variant="h2" color="blue-gray">
           {ratings}
@@ -86,6 +87,9 @@ const ProductCard = ({ product }) => {
        </div>
         <Typography  color="gray" className="mt-3 font-normal">
           {description}
+        </Typography>
+        <Typography variant="h4" color="blue-gray">
+          {price}
         </Typography>
       </CardBody>
       <CardFooter className="flex items-center justify-between py-5 mt-10">
