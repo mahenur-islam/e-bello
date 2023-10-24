@@ -20,7 +20,7 @@ const BrandList = () => {
   };
 
   useEffect(() => {
-    fetch("http://localhost:5000/products")
+    fetch("https://e-bello-server-rnjd4fz5y-mdmahenurislams-projects.vercel.app/products")
       .then((res) => res.json())
       .then((data) => {
         if (selectedBrand) {

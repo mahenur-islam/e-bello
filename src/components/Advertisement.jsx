@@ -1,11 +1,10 @@
-import  { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
 const Advertisement = () => {
   const [days, setDays] = useState(15);
   const [hours, setHours] = useState(10);
   const [minutes, setMinutes] = useState(24);
   const [seconds, setSeconds] = useState(50);
-
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -29,7 +28,7 @@ const Advertisement = () => {
           }
         }
       }
-    }, 1000); 
+    }, 1000);
 
     return () => {
       clearInterval(timer);
@@ -37,9 +36,10 @@ const Advertisement = () => {
   }, [days, hours, minutes, seconds]);
 
   return (
-    <div className="mx-auto w-11/12 text-center flex flex-col justify-center items-center gap-10 py-10">
-      <h1 className="font-bold text-xl md:text-4xl">Flash Sell!</h1>
-      <div className="grid grid-flow-col gap-5 text-center auto-cols-max">
+    <div className="advertisement-container bg-cover bg-center bg-no-repeat h-[60vh] md:m-10 md:block" style={{ backgroundImage: 'url("https://i.ibb.co/1fRV8JX/a85c93a1-e850-4a08-aebc-b5f080411c1f-2023-August-22-T18-25-01-3734289-PM.jpg")' }}>
+      <div className="md:p-44 p-40">
+      <h1 className="font-bold text-2xl md:text-4xl text-white px-10 py-5">Flash Sell!</h1>
+      <div className="grid grid-flow-col gap-5 auto-cols-max">
         <div className="flex flex-col p-2 bg-neutral rounded-box text-neutral-content">
           <span className="countdown font-mono text-5xl">
             <span style={{ "--value": days }}></span>
@@ -64,6 +64,7 @@ const Advertisement = () => {
           </span>
           sec
         </div>
+      </div>
       </div>
     </div>
   );

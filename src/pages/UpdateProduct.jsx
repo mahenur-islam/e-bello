@@ -28,7 +28,7 @@ const UpdateProduct = () => {
     };
 
    
-    fetch(`http://localhost:5000/products/${product_id}`, {
+    fetch(`https://e-bello-server-rnjd4fz5y-mdmahenurislams-projects.vercel.app/products/${product_id}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",

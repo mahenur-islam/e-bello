@@ -14,10 +14,10 @@ const brands = [
 const Brands = () => {
   return (
     <div>
-      <div className="brand-list grid grid-cols-1 md:grid-cols-6 my-20">
+      <div className="brand-list grid grid-cols-1 md:grid-cols-6 gap-5 my-40 ">
         {brands.map((brand) => (
           <Link key={brand.id} to={`/products/${brand.name}`}>
-            <div className="brand-card flex flex-col justify-center items-center w-60 ">
+            <div className="brand-card flex flex-col justify-center items-center mx-auto w-60 bg-gray-200 rounded-lg hover:bg-gray-50 p-2">
               <img src={brand.image} alt={brand.name} className='w-32' />
               <p>{brand.name}</p>
             </div>

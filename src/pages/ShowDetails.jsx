@@ -17,7 +17,7 @@ const ShowDetails = () => {
   const [productData, setProductData] = useState(null);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/products/${product._id}`, {
+    fetch(`https://e-bello-server-rnjd4fz5y-mdmahenurislams-projects.vercel.app/products/${product._id}`, {
       method: "GET",
     })
       .then((res) => res.json())

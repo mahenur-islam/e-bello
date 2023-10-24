@@ -171,7 +171,7 @@ const Register = () => {
             </Link>
           </p>
         </form>
-        <FcGoogle className="text-5xl mx-auto mb-5" onClick={handleGoogleSignIn}></FcGoogle>
+        <FcGoogle className="text-5xl mx-auto mb-5 hover:cursor-pointer" onClick={handleGoogleSignIn}></FcGoogle>
       </div>
     </div>
   );

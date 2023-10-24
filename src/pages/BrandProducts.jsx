@@ -3,7 +3,6 @@ import  { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
 import ProductCardDetails from './ProductCardDetails';
-import Advertisement from '../components/Advertisement'
 import Banner from '../components/Banner';
 
 const BrandProducts = () => {
@@ -13,7 +12,7 @@ const BrandProducts = () => {
   useEffect(() => {
     // Fetch products based on the selected brand
     // You will need to replace this with your actual API endpoint
-    fetch(`http://localhost:5000/products?brand=${brandName}`)
+    fetch(`https://e-bello-server-rnjd4fz5y-mdmahenurislams-projects.vercel.app/products?brand=${brandName}`)
       .then((response) => response.json())
       .then((data) => {
         setProducts(data);

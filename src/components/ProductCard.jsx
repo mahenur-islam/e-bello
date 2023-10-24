@@ -1,5 +1,17 @@
 /* eslint-disable react/prop-types */
 import Swal from "sweetalert2";
+import {
+  Card,
+  CardHeader,
+  CardBody,
+  CardFooter,
+  Typography,
+  Avatar,
+  Tooltip,
+  Button,
+} from "@material-tailwind/react";
+
+import { AiFillStar } from "react-icons/ai";
 const ProductCard = ({ product }) => {
   const {
     _id,
@@ -26,9 +38,12 @@ const ProductCard = ({ product }) => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/products/${_id}`, {
-          method: "DELETE",
-        })
+        fetch(
+          `https://e-bello-server-rnjd4fz5y-mdmahenurislams-projects.vercel.app/products/${_id}`,
+          {
+            method: "DELETE",
+          }
+        )
           .then((res) => res.json())
           .then((data) => {
             if (data.deletedCount > 0) {
@@ -44,57 +59,41 @@ const ProductCard = ({ product }) => {
     });
   };
   return (
-    <div>
-      <div className="card card-side w-full bg-base-100 shadow-xl mb-10 text-left">
-        <figure>
-          <img src={photoUrl} alt="Movie" className="w-[200px] h-[200px]" />
-        </figure>
-        <div className="card-body">
-          <h2 className="card-title text-2xl">{productName}</h2>
-          <p className="font-semibold">
-            {brandName}
-          </p>
-          <h3 className="text-orange-600 font-bold">{ratings}</h3>
-          <div className="rating">
-            <input
-              type="radio"
-              name="rating-4"
-              className="mask mask-star-2 bg-green-500"
-            />
-            <input
-              type="radio"
-              name="rating-4"
-              className="mask mask-star-2 bg-green-500"
-              defaultChecked
-            />
-            <input
-              type="radio"
-              name="rating-4"
-              className="mask mask-star-2 bg-green-500"
-            />
-            <input
-              type="radio"
-              name="rating-4"
-              className="mask mask-star-2 bg-green-500"
-            />
-            <input
-              type="radio"
-              name="rating-4"
-              className="mask mask-star-2 bg-green-500"
-            />
+    <Card className="max-w-[24rem] overflow-hidden bg-white px-2 pt-5 mx-auto relative">
+      <CardHeader
+        floated={false}
+        shadow={false}
+        color="transparent"
+        className="m-0 rounded-lg mx-auto"
+      >
+        <img src={photoUrl} alt={productName} className="w-64 h-64" />
+      </CardHeader>
+      <CardBody>
+        <Typography variant="h4" color="blue-gray">
+          {productName}
+        </Typography>
+       <div className="flex justify-center">
+       <Typography variant="h2" color="blue-gray">
+          {ratings}
+          <div className="5 flex mx-auto gap-0 text-center">
+            <AiFillStar />
+            <AiFillStar />
+            <AiFillStar />
+            <AiFillStar />
+            <AiFillStar />
           </div>
-          <p>{description}</p>
-          <div className="card-actions justify-end">
-            <button
-              className="btn btn-primary"
-              onClick={() => handleDelete(_id)}
-            >
-              Delete
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
+        </Typography>
+       </div>
+        <Typography  color="gray" className="mt-3 font-normal">
+          {description}
+        </Typography>
+      </CardBody>
+      <CardFooter className="flex items-center justify-between py-5 mt-10">
+        <Button onClick={handleDelete} className="text-center  bg-gray-700 px-4 absolute bottom-3 right-3">
+          Delete
+        </Button>
+      </CardFooter>
+    </Card>
   );
 };
 
