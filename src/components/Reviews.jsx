@@ -9,7 +9,7 @@ import { AiFillStar } from "react-icons/ai";
 const Reviews = () => {
   return (
     <div className="mb-40">
-      <h1 className="text-3xl md:text-5xl text-center my-20 py-10">
+      <h1 className="text-3xl md:text-5xl text-center my-20 py-10 dark:text-white">
         {" "}
         Customer Reviews
       </h1>

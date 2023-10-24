@@ -1,4 +1,4 @@
-import { FcOvertime} from "react-icons/fc";
+
 import {TbTruckDelivery} from 'react-icons/tb'
 import {SiCashapp} from 'react-icons/si'
 import { GoGift } from "react-icons/go";
@@ -9,7 +9,7 @@ const Services = () => {
   return (
     <div className="py-32">
       <div>
-        <h1 className="text-xl font-semibold md:text-5xl text-center">
+        <h1 className="text-xl font-semibold md:text-5xl text-center dark:text-white">
           Why Choose Us?
         </h1>
       </div>
