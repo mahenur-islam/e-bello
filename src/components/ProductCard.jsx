@@ -15,7 +15,6 @@ const ProductCard = ({ product }) => {
 
     productName,
     brandName,
-    types,
     ratings,
     price,
     description,
@@ -37,7 +36,7 @@ const ProductCard = ({ product }) => {
     }).then((result) => {
       if (result.isConfirmed) {
         fetch(
-          `https://e-bello-server-eqg1y2hj3-mdmahenurislams-projects.vercel.app/products/${_id}`,
+          `http://localhost:5000/products/${_id}`,
           {
             method: "DELETE",
           }

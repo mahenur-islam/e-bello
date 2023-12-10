@@ -32,7 +32,7 @@ const routes = createBrowserRouter([
             <MyCart></MyCart>
           </PrivateRoute>
         ),
-        loader: () => fetch("https://e-bello-server-eqg1y2hj3-mdmahenurislams-projects.vercel.app/products"),
+        loader: () => fetch("http://localhost:5000/products"),
       },
       {
         path: "/products/:brandName",
@@ -41,12 +41,12 @@ const routes = createBrowserRouter([
       {
         path: "/updateProduct/:id",
         element: <PrivateRoute><UpdateProduct></UpdateProduct></PrivateRoute>,
-        loader: ({params}) => fetch(`https://e-bello-server-eqg1y2hj3-mdmahenurislams-projects.vercel.app/products/${params.id}`)
+        loader: ({params}) => fetch(`http://localhost:5000/products/${params.id}`)
       },
       {
         path: "/showdetails/:id",
         element: <PrivateRoute><ShowDetails></ShowDetails></PrivateRoute>,
-        loader: ({params}) => fetch(`https://e-bello-server-eqg1y2hj3-mdmahenurislams-projects.vercel.app/products/${params.id}`)
+        loader: ({params}) => fetch(`http://localhost:5000/products/${params.id}`)
       },
       {
         path: "/login",

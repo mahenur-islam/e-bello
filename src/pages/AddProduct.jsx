@@ -26,7 +26,7 @@ const AddProduct = () => {
     console.log(newProduct);
 
     //send newProduct from data
-    fetch("https://e-bello-server-eqg1y2hj3-mdmahenurislams-projects.vercel.app/products", {
+    fetch("http://localhost:5000/products", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -46,7 +46,7 @@ const AddProduct = () => {
         }
       });
 
-      fetch("https://e-bello-server-eqg1y2hj3-mdmahenurislams-projects.vercel.app/brands", {
+      fetch("http://localhost:5000/products/brands", {
         method: "POST",
         headers: {
           "content-type": "application/json",

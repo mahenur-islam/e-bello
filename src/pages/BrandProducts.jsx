@@ -12,7 +12,7 @@ const BrandProducts = () => {
   useEffect(() => {
     // Fetch products based on the selected brand
     // You will need to replace this with your actual API endpoint
-    fetch(`https://e-bello-server-eqg1y2hj3-mdmahenurislams-projects.vercel.app/products?brand=${brandName}`)
+    fetch(`http://localhost:5000/products?brand=${brandName}`)
       .then((response) => response.json())
       .then((data) => {
         setProducts(data);

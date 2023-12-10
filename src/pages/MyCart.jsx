@@ -2,7 +2,7 @@ import { useLoaderData } from "react-router-dom";
 import ProductCard from "../components/ProductCard";
 
 const MyCart = () => {
-    const products = useLoaderData() || []; // Initialize with an empty array if useLoaderData() is not an array
+    const products = useLoaderData() || []; 
     console.log(products);
     
     return (
